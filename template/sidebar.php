@@ -2,7 +2,7 @@
     <div class="sidebar-brand">
         <a href="index.php" class="brand-link">
             <img src="assets/img/logo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow" />
-            <span class="brand-text fw-light">SICMAS-CRUD</span>
+            <span class="brand-text fw-light">SIPERPUS</span>
         </a>
     </div>
 
@@ -19,19 +19,25 @@
                 <li class="nav-item">
                     <a href="data-input.php" class="nav-link">
                         <i class="nav-icon bi bi-clipboard-data-fill"></i>
-                        <p>Input Mahasiswa</p>
+                        <p>Input Data Peminjaman Buku</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="data-list.php" class="nav-link">
                         <i class="nav-icon bi bi-card-list"></i>
-                        <p>Daftar Mahasiswa</p>
+                        <p>Daftar Buku</p>
+                    </a>
+                </li> -->
+                 <li class="nav-item">
+                    <a href="data-list-buku.php" class="nav-link">
+                        <i class="nav-icon bi bi-card-list"></i>
+                        <p>Daftar Buku</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="data-search.php" class="nav-link">
                         <i class="nav-icon bi bi-search-heart-fill"></i>
-                        <p>Cari Mahasiswa</p>
+                        <p>Cari Buku </p>
                     </a>
                 </li>
                 <li class="nav-header">MASTER DATA</li>
@@ -39,12 +45,6 @@
                     <a href="master-prodi-list.php" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>Program Studi</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="master-provinsi-list.php" class="nav-link">
-                        <i class="nav-icon bi bi-briefcase-fill"></i>
-                        <p>Provinsi</p>
                     </a>
                 </li>
             </ul>

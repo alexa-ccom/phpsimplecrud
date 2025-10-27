@@ -12,19 +12,20 @@ class Mahasiswa extends Database {
         $nama     = $data['nama'];
         $prodi    = $data['prodi'];
         $alamat   = $data['alamat'];
-        $provinsi = $data['provinsi'];
         $email    = $data['email'];
         $telp     = $data['telp'];
         $status   = $data['status'];
+        $category   = $data['kategori'];
+        $bukupinjam   = $data['bukupinjam'];
         // Menyiapkan query SQL untuk insert data menggunakan prepared statement
-        $query = "INSERT INTO tb_mahasiswa (nim_mhs, nama_mhs, prodi_mhs, alamat, provinsi, email, telp, status_mhs) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tb_mahasiswa (nim_mhs, nama_mhs, prodi_mhs, alamat, email, telp, status_mhs, kategori_buku, buku_pinjam) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         // Mengecek apakah statement berhasil disiapkan
         if(!$stmt){
             return false;
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ssssssss", $nim, $nama, $prodi, $alamat, $provinsi, $email, $telp, $status);
+        $stmt->bind_param("sssssssss", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $category, $buku_pinjam);
         $result = $stmt->execute();
         $stmt->close();
         // Mengembalikan hasil eksekusi query
@@ -34,10 +35,9 @@ class Mahasiswa extends Database {
     // Method untuk mengambil semua data mahasiswa
     public function getAllMahasiswa(){
         // Menyiapkan query SQL untuk mengambil data mahasiswa beserta prodi dan provinsi
-        $query = "SELECT id_mhs, nim_mhs, nama_mhs, nama_prodi, nama_provinsi, alamat, email, telp, status_mhs 
+        $query = "SELECT id_mhs, nim_mhs, nama_mhs, nama_prodi, alamat, email, telp, status_mhs, kategori_buku, buku_pinjam 
                   FROM tb_mahasiswa
-                  JOIN tb_prodi ON prodi_mhs = kode_prodi
-                  JOIN tb_provinsi ON provinsi = id_provinsi";
+                  JOIN tb_prodi ON prodi_mhs = kode_prodi";
         $result = $this->conn->query($query);
         // Menyiapkan array kosong untuk menyimpan data mahasiswa
         $mahasiswa = [];
@@ -50,11 +50,12 @@ class Mahasiswa extends Database {
                     'nim' => $row['nim_mhs'],
                     'nama' => $row['nama_mhs'],
                     'prodi' => $row['nama_prodi'],
-                    'provinsi' => $row['nama_provinsi'],
                     'alamat' => $row['alamat'],
                     'email' => $row['email'],
                     'telp' => $row['telp'],
-                    'status' => $row['status_mhs']
+                    'status' => $row['status_mhs'],
+                    'kategori' => $row['kategori_buku'],
+                    'bukupinjam' => $row['buku_pinjam']
                 ];
             }
         }
@@ -84,10 +85,11 @@ class Mahasiswa extends Database {
                 'nama' => $row['nama_mhs'],
                 'prodi' => $row['prodi_mhs'],
                 'alamat' => $row['alamat'],
-                'provinsi' => $row['provinsi'],
                 'email' => $row['email'],
                 'telp' => $row['telp'],
-                'status' => $row['status_mhs']
+                'status' => $row['status_mhs'],
+                'kategori' => $row['kategori_buku'],
+                'bukupinjam' => $row['buku_pinjam']
             ];
         }
         $stmt->close();
@@ -103,18 +105,19 @@ class Mahasiswa extends Database {
         $nama     = $data['nama'];
         $prodi    = $data['prodi'];
         $alamat   = $data['alamat'];
-        $provinsi = $data['provinsi'];
         $email    = $data['email'];
         $telp     = $data['telp'];
         $status   = $data['status'];
+        $category   = $data['kategori_buku'];
+        $bukupinjam   = $data['bukupinjam'];
         // Menyiapkan query SQL untuk update data menggunakan prepared statement
-        $query = "UPDATE tb_mahasiswa SET nim_mhs = ?, nama_mhs = ?, prodi_mhs = ?, alamat = ?, provinsi = ?, email = ?, telp = ?, status_mhs = ? WHERE id_mhs = ?";
+        $query = "UPDATE tb_mahasiswa SET nim_mhs = ?, nama_mhs = ?, prodi_mhs = ?, alamat = ?, email = ?, telp = ?, status_mhs = ?, kategori_buku = ?, buku_pinjam = ? WHERE id_mhs = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ssssssssi", $nim, $nama, $prodi, $alamat, $provinsi, $email, $telp, $status, $id);
+        $stmt->bind_param("ssssssssi", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $id, $category, $buku_pinjam);
         $result = $stmt->execute();
         $stmt->close();
         // Mengembalikan hasil eksekusi query
@@ -141,10 +144,9 @@ class Mahasiswa extends Database {
         // Menyiapkan LIKE query untuk pencarian
         $likeQuery = "%".$kataKunci."%";
         // Menyiapkan query SQL untuk pencarian data mahasiswa menggunakan prepared statement
-        $query = "SELECT id_mhs, nim_mhs, nama_mhs, nama_prodi, nama_provinsi, alamat, email, telp, status_mhs 
+        $query = "SELECT id_mhs, nim_mhs, nama_mhs, nama_prodi, alamat, email, telp, status_mhs 
                   FROM tb_mahasiswa
                   JOIN tb_prodi ON prodi_mhs = kode_prodi
-                  JOIN tb_provinsi ON provinsi = id_provinsi
                   WHERE nim_mhs LIKE ? OR nama_mhs LIKE ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
@@ -166,7 +168,6 @@ class Mahasiswa extends Database {
                     'nim' => $row['nim_mhs'],
                     'nama' => $row['nama_mhs'],
                     'prodi' => $row['nama_prodi'],
-                    'provinsi' => $row['nama_provinsi'],
                     'alamat' => $row['alamat'],
                     'email' => $row['email'],
                     'telp' => $row['telp'],

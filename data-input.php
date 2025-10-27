@@ -4,10 +4,10 @@ include_once 'config/class-master.php';
 $master = new MasterData();
 // Mengambil daftar program studi, provinsi, dan status mahasiswa
 $prodiList = $master->getProdi();
-// Mengambil daftar provinsi
-$provinsiList = $master->getProvinsi();
 // Mengambil daftar status mahasiswa
 $statusList = $master->getStatus();
+// $categoryList = $master->getCategory();
+
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
 if(isset($_GET['status'])){
     // Mengecek nilai parameter GET 'status' dan menampilkan alert yang sesuai menggunakan JavaScript
@@ -36,7 +36,7 @@ if(isset($_GET['status'])){
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Input Mahasiswa</h3>
+								<h3 class="mb-0">Input Data Peminjaman Buku</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
@@ -54,7 +54,7 @@ if(isset($_GET['status'])){
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h3 class="card-title">Formulir Mahasiswa</h3>
+										<h3 class="card-title">Formulir Peminjaman Buku</h3>
 										<div class="card-tools">
 											<button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
 												<i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -91,18 +91,7 @@ if(isset($_GET['status'])){
                                                 <label for="alamat" class="form-label">Alamat</label>
                                                 <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap Sesuai KTP" required></textarea>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="provinsi" class="form-label">Provinsi</label>
-                                                <select class="form-select" id="provinsi" name="provinsi" required>
-                                                    <option value="" selected disabled>Pilih Provinsi</option>
-                                                    <?php
-                                                    // Iterasi daftar provinsi dan menampilkannya sebagai opsi dalam dropdown
-                                                    foreach ($provinsiList as $provinsi){
-                                                        echo '<option value="'.$provinsi['id'].'">'.$provinsi['nama'].'</option>';
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
+
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Valid dan Benar" required>
@@ -122,6 +111,14 @@ if(isset($_GET['status'])){
                                                     }
                                                     ?>
                                                 </select>
+                                            </div>
+                                            <div class="mb-3">
+                                            <label for="buku_pinjam" class="form-label">Judul Buku</label>
+                                            <input type="text" class="form-control" id="buku_pinjam" name=buku_pinjam" placeholder="Masukkan Judul Buku" required>
+                                            </div>
+                                           <div class="mb-3">
+                                            <label for="kategori" class="form-label">Kategori Buku</label>
+                                            <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Masukkan Kategori Buku" required>
                                             </div>
                                         </div>
 									    <div class="card-footer">
