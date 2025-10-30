@@ -15,7 +15,7 @@ class Buku extends Database {
         $category    = $data['category'];
         $stock     = $data['stock'];
         // Menyiapkan query SQL untuk insert data menggunakan prepared statement
-        $query = "INSERT INTO tb_daftar_buku (id_book, book_name, ISBN, release_date, category, stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tb_daftar_buku (id_book, book_nm, ISBN, release_date, category, stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         // Mengecek apakah statement berhasil disiapkan
         if(!$stmt){
@@ -55,6 +55,80 @@ class Buku extends Database {
         return $buku;
 
     }
+    public function searchBuku($kataKunci) {
+    // Menyiapkan LIKE query untuk pencarian
+    $likeQuery = "%" . $kataKunci . "%";
+
+    // Menyiapkan query SQL untuk pencarian data buku menggunakan prepared statement
+    $query = "SELECT id_book, book_nm, ISBN, release_date, category, stock
+              FROM tb_daftar_buku
+              WHERE ISBN LIKE ? 
+                 OR book_nm LIKE ? 
+                 OR category LIKE ? ";
+
+    $stmt = $this->conn->prepare($query);
+    if(!$stmt){
+        // Jika statement gagal disiapkan, kembalikan array kosong
+        return [];
+    }
+
+    // Memasukkan parameter ke statement (semua pakai LIKE)
+    $stmt->bind_param("sss", $likeQuery, $likeQuery, $likeQuery,);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Menyiapkan array kosong untuk menyimpan data buku
+    $buku = [];
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()) {
+            // Menyimpan data buku ke array
+            $buku[] = [
+                    'id' => $row['id_book'],
+                    'nama_buku' => $row['book_nm'],
+                    'isbn' => $row['ISBN'],
+                    'tahun_rilis' => $row['release_date'],
+                    'category' => $row['category'],
+                    'stock' => $row['stock']
+            ];
+        }
+    }
+    
+
+    $stmt->close();
+    // Mengembalikan array data buku yang ditemukan
+    return $buku;
+}
+// public function tambahBuku($data) {
+//     // Ambil data dari array $data
+//     $namaBuku   = $data['nama_buku'];
+//     $isbn       = $data['isbn'];
+//     $tahunRilis = $data['tahun_rilis'];
+//     $category   = $data['category'];
+//     $stock      = $data['stock'];
+
+//     // Query insert
+//     $query = "INSERT INTO tb_buku (nama_buku, isbn, tahun_rilis, category, stock) 
+//               VALUES (?, ?, ?, ?, ?)";
+
+//     $stmt = $this->conn->prepare($query);
+
+//     if (!$stmt) {
+//         return false; // jika prepare gagal
+//     }
+
+//     // Bind parameter sesuai urutan dan tipe data
+//     $stmt->bind_param("ssssi", $namaBuku, $isbn, $tahunRilis, $category, $stock);
+
+//     // Eksekusi query
+//     $result = $stmt->execute();
+
+//     // Tutup statement
+//     $stmt->close();
+
+//     return $result;
+// }
+
+
 }
 
 ?>

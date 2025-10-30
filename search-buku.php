@@ -7,7 +7,7 @@ $kataKunci = '';
 if(isset($_GET['search'])){
 	// Mengambil kata kunci pencarian dari parameter GET 'search'
 	$kataKunci = $_GET['search'];
-	// Memanggil method searchMahasiswa untuk mencari data mahasiswa berdasarkan kata kunci dan menyimpan hasil dalam variabel $cariMahasiswa
+	// Memanggil method searchMahasiswa untuk mencari data buku berdasarkan kata kunci dan menyimpan hasil dalam variabel $cariBuku
 	$cariBuku = $buku->searchBuku($kataKunci);
 } 
 ?>
@@ -64,7 +64,7 @@ if(isset($_GET['search'])){
 										<form action="search-buku.php" method="GET">
 											<div class="mb-3">
 												<label for="search" class="form-label">Masukan Nama Buku</label>
-												<input type="text" class="form-control" id="search" name="search" placeholder="Cari berdasarkan NIM atau Nama Mahasiswa" value="<?php echo $kataKunci; ?>" required>
+												<input type="text" class="form-control" id="search" name="search" placeholder="Cari berdasarkan Nama Buku, ISBN, Tahun Rilis, Kategori, Stock" value="<?php echo $kataKunci; ?>" required>
 											</div>
 											<button type="submit" class="btn btn-primary"><i class="bi bi-search-heart-fill"></i> Cari</button>
 										</form>
@@ -106,19 +106,19 @@ if(isset($_GET['search'])){
 													foreach ($cariBuku as $index => $buku){
 													
 														// Menampilkan baris data mahasiswa dalam tabel
-														if (count($dataBuku) == 0) {
+														if (count($buku) == 0) {
 														echo '<tr class="align-middle">
 															<td colspan="8" class="text-center">Tidak ada data buku.</td>
 														</tr>';
 													} else {
-														foreach ($dataBuku as $index => $b) {
+														foreach ($cariBuku as $index => $b) {
 															echo '<tr class="align-middle">
-																<td>' . ($index + 1) . '</td>
-																<td>' . $b['nama_buku'] . '</td>
-																<td>' . $b['isbn'] . '</td>
-																<td>' . $b['tahun_rilis'] . '</td>
-																<td>' . $b['category'] . '</td>
-																<td>' . $b['stock'] . '</td>
+																<td>' .($index + 1). '</td>
+																<td>' .$b['nama_buku']. '</td>
+																<td>' .$b['isbn']. '</td>
+																<td>' .$b['tahun_rilis']. '</td>
+																<td>' .$b['category']. '</td>
+																<td>' .$b['stock']. '</td>
 															</tr>';
 														}
                                                     }

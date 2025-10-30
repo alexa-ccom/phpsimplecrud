@@ -11,7 +11,7 @@
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" aria-label="Main navigation" data-accordion="false" id="navigation">
                 <li class="nav-header">APLIKASI</li>
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link">
+                    <a href="beranda.php" class="nav-link">
                         <i class="nav-icon bi bi-house-door-fill"></i>
                         <p>Beranda</p>
                     </a>
@@ -31,11 +31,11 @@
                  <li class="nav-item">
                     <a href="data-list-buku.php" class="nav-link">
                         <i class="nav-icon bi bi-card-list"></i>
-                        <p>Daftar Buku</p>
+                        <p>List Data Peminjaman</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="data-search.php" class="nav-link">
+                    <a href="search-buku.php" class="nav-link">
                         <i class="nav-icon bi bi-search-heart-fill"></i>
                         <p>Cari Buku </p>
                     </a>
@@ -45,6 +45,12 @@
                     <a href="master-prodi-list.php" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>Program Studi</p>
+                    </a>
+                </li>
+                                 <li class="nav-item">
+                    <a href="data-list-buku.php" class="nav-link">
+                        <i class="nav-icon bi bi-card-list"></i>
+                        <p>Daftar Buku</p>
                     </a>
                 </li>
             </ul>

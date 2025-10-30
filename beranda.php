@@ -11,7 +11,7 @@
 			<?php include 'template/navbar.php'; // Menyertakan navbar template ?>
 
 			<?php include 'template/sidebar.php'; // Menyertakan sidebar template ?>
-			<?php include 'assets/css/custom.css'; ?>
+			 <?php include 'assets/css/custom.css'; ?> 
 
 			<main class="app-main">
 
@@ -55,7 +55,7 @@
 										<p>Silakan pilih salah satu tombol untuk memulai!</p>
 										<a href="data-input.php" class="btn btn-primary btn-lg"><i class="bi bi-clipboard-data-fill"></i> Input Data Peminjaman Buku</a>
 										<a href="data-list-buku.php" class="btn btn-success btn-lg"><i class="bi bi-card-list"></i> 	Daftar Buku</a>
-										<a href="data-search.php" class="btn btn-warning btn-lg"><i class="bi bi-search-heart-fill"></i> Cari Buku</a>
+										<a href="search-buku.php" class="btn btn-warning btn-lg"><i class="bi bi-search-heart-fill"></i> Cari Buku</a>
 									</div>
 
 								</div>
