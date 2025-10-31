@@ -17,6 +17,8 @@ class Mahasiswa extends Database {
         $status   = $data['status'];
         $category   = $data['kategori'];
         $bukupinjam   = $data['bukupinjam'];
+        $pinjam     = $data['pinjam'];
+        $kembali     = $data['kembali'];
         // Menyiapkan query SQL untuk insert data menggunakan prepared statement
         $query = "INSERT INTO tb_mahasiswa (nim_mhs, nama_mhs, prodi_mhs, alamat, email, telp, status_mhs, kategori_buku, buku_pinjam) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
@@ -55,7 +57,8 @@ class Mahasiswa extends Database {
                     'telp' => $row['telp'],
                     'status' => $row['status_mhs'],
                     'kategori' => $row['kategori_buku'],
-                    'bukupinjam' => $row['buku_pinjam']
+                    'bukupinjam' => $row['buku_pinjam'],
+
                 ];
             }
         }
@@ -89,7 +92,7 @@ class Mahasiswa extends Database {
                 'telp' => $row['telp'],
                 'status' => $row['status_mhs'],
                 'kategori' => $row['kategori_buku'],
-                'bukupinjam' => $row['buku_pinjam']
+                'bukupinjam' => $row['buku_pinjam'],
             ];
         }
         $stmt->close();
@@ -110,6 +113,8 @@ class Mahasiswa extends Database {
         $status   = $data['status'];
         $category   = $data['kategori_buku'];
         $bukupinjam   = $data['bukupinjam'];
+        $pinjam   = $data['tglpinjam'];
+        $kembali   = $data['tglkembali'];
         // Menyiapkan query SQL untuk update data menggunakan prepared statement
         $query = "UPDATE tb_mahasiswa SET nim_mhs = ?, nama_mhs = ?, prodi_mhs = ?, alamat = ?, email = ?, telp = ?, status_mhs = ?, kategori_buku = ?, buku_pinjam = ? WHERE id_mhs = ?";
         $stmt = $this->conn->prepare($query);
@@ -117,7 +122,7 @@ class Mahasiswa extends Database {
             return false;
         }
         // Memasukkan parameter ke statement
-        $stmt->bind_param("ssssssssi", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $id, $category, $buku_pinjam);
+        $stmt->bind_param("sssssssss", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $id, $category, $bukupinjam, $pinjam, $kembali);
         $result = $stmt->execute();
         $stmt->close();
         // Mengembalikan hasil eksekusi query

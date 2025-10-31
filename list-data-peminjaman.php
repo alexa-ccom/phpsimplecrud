@@ -38,7 +38,7 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Daftar Mahasiswa</h3>
+								<h3 class="mb-0">Daftar Customer</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
@@ -53,10 +53,10 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 				<div class="app-content">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-12">
+							<div class="col-14">
 								<div class="card">
 									<div class="card-header">
-										<h3 class="card-title">Tabel Mahasiswa</h3>
+										<h3 class="card-title">Tabel Customer</h3>
 										<div class="card-tools">
 											<button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
 												<i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -75,10 +75,14 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 													<th>NIM</th>
 													<th>Nama</th>
 													<th>Prodi</th>
-													<th>Provinsi</th>
-													<th>Alamat</th>
-													<th>Telp</th>
+													<th>alamat</th>
 													<th>Email</th>
+													<th>Telp</th>
+													<th>Status</th>
+													<th>Kategori</th>
+													<th>Nama buku</th>
+													<th>Tanggal Pinjam</th>
+													<th>Tanggal Kembali</th>
 													<th class="text-center">Status</th>
 													<th class="text-center">Aksi</th>
 												</tr>
@@ -87,29 +91,24 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 												<?php
 													if(count($dataMahasiswa) == 0){
 													    echo '<tr class="align-middle">
-															<td colspan="10" class="text-center">Tidak ada data mahasiswa.</td>
+															<td colspan="14" class="text-center">Tidak ada data mahasiswa.</td>
 														</tr>';
 													} else {
 														foreach ($dataMahasiswa as $index => $mahasiswa){
 															if($mahasiswa['status'] == 1){
 															    $mahasiswa['status'] = '<span class="badge bg-success">Aktif</span>';
-															} elseif($mahasiswa['status'] == 2){
-															    $mahasiswa['status'] = '<span class="badge bg-danger">Tidak Aktif</span>';
-															} elseif($mahasiswa['status'] == 3){
-															    $mahasiswa['status'] = '<span class="badge bg-warning text-dark">Cuti</span>';
-															} elseif($mahasiswa['status'] == 4){
-															    $mahasiswa['status'] = '<span class="badge bg-primary">Lulus</span>';
 															} 
 															echo '<tr class="align-middle">
 																<td>'.($index + 1).'</td>
 																<td>'.$mahasiswa['nim'].'</td>
 																<td>'.$mahasiswa['nama'].'</td>
 																<td>'.$mahasiswa['prodi'].'</td>
-																<td>'.$mahasiswa['provinsi'].'</td>
 																<td>'.$mahasiswa['alamat'].'</td>
-																<td>'.$mahasiswa['telp'].'</td>
 																<td>'.$mahasiswa['email'].'</td>
-																<td class="text-center">'.$mahasiswa['status'].'</td>
+																<td>'.$mahasiswa['telp'].'</td>
+																<td>'.$mahasiswa['status'].'</td>
+																<td>'.$mahasiswa['kategori'].'</td>
+																<td>'.$mahasiswa['bukupinjam'].'</td>
 																<td class="text-center">
 																	<button type="button" class="btn btn-sm btn-warning me-1" onclick="window.location.href=\'data-edit.php?id='.$mahasiswa['id'].'\'"><i class="bi bi-pencil-fill"></i> Edit</button>
 																	<button type="button" class="btn btn-sm btn-danger" onclick="if(confirm(\'Yakin ingin menghapus data mahasiswa ini?\')){window.location.href=\'proses/proses-delete.php?id='.$mahasiswa['id'].'\'}"><i class="bi bi-trash-fill"></i> Hapus</button>
@@ -122,7 +121,7 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 										</table>
 									</div>
 									<div class="card-footer">
-										<button type="button" class="btn btn-primary" onclick="window.location.href='data-input.php'"><i class="bi bi-plus-lg"></i> Tambah Mahasiswa</button>
+										<button type="button" class="btn btn-primary" onclick="window.location.href='data-input.php'"><i class="bi bi-plus-lg"></i> Tambah Customer</button>
 									</div>
 								</div>
 							</div>

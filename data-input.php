@@ -120,6 +120,14 @@ if(isset($_GET['status'])){
                                             <label for="kategori" class="form-label">Kategori Buku</label>
                                             <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Masukkan Kategori Buku" required>
                                             </div>
+                                           <div class="mb-3">
+                                            <label for="tanggal" class="form-label">Tanggal Peminjaman</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Kategori Buku" required>
+                                            </div>
+                                           <div class="mb-3">
+                                            <label for="tanggal" class="form-label">Tanggal Pengembalian</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Kategori Buku" required>
+                                            </div>
                                         </div>
 									    <div class="card-footer">
                                             <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='data-list.php'">Batal</button>

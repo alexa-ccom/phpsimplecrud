@@ -14,14 +14,16 @@ $dataMahasiswa = [
     'telp' => $_POST['telp'],
     'status' => $_POST['status'],
     'kategori' => $_POST['kategori'],
-    'bukupinjam' => $_POST['buku_pinjam']
+    'bukupinjam' => $_POST['buku_pinjam'],
+    'pinjam' => $_POST['pinjam'],
+    'kembali' => $_POST['kembali']
 ];
 // Memanggil method inputMahasiswa untuk memasukkan data mahasiswa dengan parameter array $dataMahasiswa
 $input = $mahasiswa->inputMahasiswa($dataMahasiswa);
 // Mengecek apakah proses input berhasil atau tidak - true/false
 if($input){
     // Jika berhasil, redirect ke halaman data-list.php dengan status inputsuccess
-    header("Location: ../index.php?status=inputsuccess");
+    header("Location: ../beranda.php?status=inputsuccess");
 } else {
     // Jika gagal, redirect ke halaman data-input.php dengan status failed
     header("Location: ../data-input.php?status=failed");

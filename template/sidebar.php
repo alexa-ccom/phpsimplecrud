@@ -29,7 +29,7 @@
                     </a>
                 </li> -->
                  <li class="nav-item">
-                    <a href="data-list-buku.php" class="nav-link">
+                    <a href="list-data-peminjaman.php" class="nav-link">
                         <i class="nav-icon bi bi-card-list"></i>
                         <p>List Data Peminjaman</p>
                     </a>
