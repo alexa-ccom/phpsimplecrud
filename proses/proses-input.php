@@ -23,7 +23,7 @@ $input = $mahasiswa->inputMahasiswa($dataMahasiswa);
 // Mengecek apakah proses input berhasil atau tidak - true/false
 if($input){
     // Jika berhasil, redirect ke halaman data-list.php dengan status inputsuccess
-    header("Location: ../beranda.php?status=inputsuccess");
+    header("Location: ../data-input.php?status=inputsuccess");
 } else {
     // Jika gagal, redirect ke halaman data-input.php dengan status failed
     header("Location: ../data-input.php?status=failed");

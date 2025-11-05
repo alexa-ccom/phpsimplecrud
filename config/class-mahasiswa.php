@@ -46,29 +46,28 @@ class Mahasiswa extends Database {
         // Mengecek apakah ada data yang ditemukan
         if($result->num_rows > 0){
             // Mengambil setiap baris data dan memasukkannya ke dalam array
-            while($row = $result->fetch_assoc()) {
-                $mahasiswa[] = [
-                    'id' => $row['id_mhs'],
-                    'nim' => $row['nim_mhs'],
-                    'nama' => $row['nama_mhs'],
-                    'prodi' => $row['nama_prodi'],
-                    'alamat' => $row['alamat'],
-                    'email' => $row['email'],
-                    'telp' => $row['telp'],
-                    'status' => $row['status_mhs'],
-                    'kategori' => $row['kategori_buku'],
-                    'bukupinjam' => $row['buku_pinjam'],
+                        while($row = $result->fetch_assoc()) {
+                            $mahasiswa[] = [
+                                'id' => $row['id_mhs'],
+                                'nim' => $row['nim_mhs'],
+                                'nama' => $row['nama_mhs'],
+                                'prodi' => $row['nama_prodi'],
+                                'alamat' => $row['alamat'],
+                                'email' => $row['email'],
+                                'telp' => $row['telp'],
+                                'status' => $row['status_mhs'],
+                                'kategori' => $row['kategori_buku'],
+                                'bukupinjam' => $row['buku_pinjam']
+                            ];
+                        }
+                    }
+                    // Mengembalikan array data mahasiswa
+                    return $mahasiswa;
+                }
 
-                ];
-            }
-        }
-        // Mengembalikan array data mahasiswa
-        return $mahasiswa;
-    }
-
-    // Method untuk mengambil data mahasiswa berdasarkan ID
-    public function getUpdateMahasiswa($id){
-        // Menyiapkan query SQL untuk mengambil data mahasiswa berdasarkan ID menggunakan prepared statement
+                // Method untuk mengambil data mahasiswa berdasarkan ID
+                public function getUpdateMahasiswa($id){
+                    // Menyiapkan query SQL untuk mengambil data mahasiswa berdasarkan ID menggunakan prepared statement
         $query = "SELECT * FROM tb_mahasiswa WHERE id_mhs = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
@@ -101,33 +100,33 @@ class Mahasiswa extends Database {
     }
 
     // Method untuk mengedit data mahasiswa
-    public function editMahasiswa($data){
-        // Mengambil data dari parameter $data
-        $id       = $data['id'];
-        $nim      = $data['nim'];
-        $nama     = $data['nama'];
-        $prodi    = $data['prodi'];
-        $alamat   = $data['alamat'];
-        $email    = $data['email'];
-        $telp     = $data['telp'];
-        $status   = $data['status'];
-        $category   = $data['kategori_buku'];
-        $bukupinjam   = $data['bukupinjam'];
-        $pinjam   = $data['tglpinjam'];
-        $kembali   = $data['tglkembali'];
-        // Menyiapkan query SQL untuk update data menggunakan prepared statement
-        $query = "UPDATE tb_mahasiswa SET nim_mhs = ?, nama_mhs = ?, prodi_mhs = ?, alamat = ?, email = ?, telp = ?, status_mhs = ?, kategori_buku = ?, buku_pinjam = ? WHERE id_mhs = ?";
-        $stmt = $this->conn->prepare($query);
-        if(!$stmt){
-            return false;
-        }
-        // Memasukkan parameter ke statement
-        $stmt->bind_param("sssssssss", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $id, $category, $bukupinjam, $pinjam, $kembali);
-        $result = $stmt->execute();
-        $stmt->close();
-        // Mengembalikan hasil eksekusi query
-        return $result;
+   public function editMahasiswa($data){
+    $id       = $data['id'];
+    $nim      = $data['nim'];
+    $nama     = $data['nama'];
+    $prodi    = $data['prodi'];
+    $alamat   = $data['alamat'];
+    $email    = $data['email'];
+    $telp     = $data['telp'];
+    $status   = $data['status'];
+
+    $query = "UPDATE tb_mahasiswa 
+              SET nim_mhs = ?, nama_mhs = ?, prodi_mhs = ?, alamat = ?, email = ?, telp = ?, status_mhs = ? 
+              WHERE id_mhs = ?";
+
+    $stmt = $this->conn->prepare($query);
+    if(!$stmt){
+        return false;
     }
+
+    // ✅ jumlah variabel dan parameter sekarang cocok (8)
+    $stmt->bind_param("sssssssi", $nim, $nama, $prodi, $alamat, $email, $telp, $status, $id);
+
+    $result = $stmt->execute();
+    $stmt->close();
+    return $result;
+}
+
 
     // Method untuk menghapus data mahasiswa
     public function deleteMahasiswa($id){

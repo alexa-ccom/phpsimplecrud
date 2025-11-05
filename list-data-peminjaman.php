@@ -38,7 +38,7 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Daftar Customer</h3>
+								<h3 class="mb-0">Daftar Peminjaman Buku</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
@@ -80,10 +80,7 @@ $dataMahasiswa = $mahasiswa->getAllMahasiswa();
 													<th>Telp</th>
 													<th>Status</th>
 													<th>Kategori</th>
-													<th>Nama buku</th>
-													<th>Tanggal Pinjam</th>
-													<th>Tanggal Kembali</th>
-													<th class="text-center">Status</th>
+													<th>Nama Buku</th>
 													<th class="text-center">Aksi</th>
 												</tr>
 											</thead>

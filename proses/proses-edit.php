@@ -11,7 +11,6 @@ $dataMahasiswa = [
     'nama' => $_POST['nama'],
     'prodi' => $_POST['prodi'],
     'alamat' => $_POST['alamat'],
-    'provinsi' => $_POST['provinsi'],
     'email' => $_POST['email'],
     'telp' => $_POST['telp'],
     'status' => $_POST['status']
@@ -21,7 +20,7 @@ $edit = $mahasiswa->editMahasiswa($dataMahasiswa);
 // Mengecek apakah proses edit berhasil atau tidak - true/false
 if($edit){
     // Jika berhasil, redirect ke halaman data-list.php dengan status editsuccess
-    header("Location: ../data-list.php?status=editsuccess");
+    header("Location: ../list-data-peminjaman.php?status=editsuccess");
 } else {
     // Jika gagal, redirect ke halaman data-edit.php dengan status failed dan membawa id mahasiswa
     header("Location: ../data-edit.php?id=".$dataMahasiswa['id']."&status=failed");

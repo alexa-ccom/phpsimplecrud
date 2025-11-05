@@ -9,12 +9,14 @@ $statusList = $master->getStatus();
 // $categoryList = $master->getCategory();
 
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
-if(isset($_GET['status'])){
-    // Mengecek nilai parameter GET 'status' dan menampilkan alert yang sesuai menggunakan JavaScript
-    if($_GET['status'] == 'failed'){
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == 'inputsuccess') {
+        echo "<script>alert('Data berhasil ditambahkan!');</script>";
+    } elseif ($_GET['status'] == 'failed') {
         echo "<script>alert('Gagal menambahkan data mahasiswa. Silakan coba lagi.');</script>";
     }
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -114,7 +116,7 @@ if(isset($_GET['status'])){
                                             </div>
                                             <div class="mb-3">
                                             <label for="buku_pinjam" class="form-label">Judul Buku</label>
-                                            <input type="text" class="form-control" id="buku_pinjam" name=buku_pinjam" placeholder="Masukkan Judul Buku" required>
+                                            <input type="text" class="form-control" id="bukupinjam" name=buku_pinjam" placeholder="Masukkan Judul Buku" required>
                                             </div>
                                            <div class="mb-3">
                                             <label for="kategori" class="form-label">Kategori Buku</label>
@@ -130,7 +132,7 @@ if(isset($_GET['status'])){
                                             </div>
                                         </div>
 									    <div class="card-footer">
-                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='data-list.php'">Batal</button>
+                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='list-data-peminjaman.php'">Batal</button>
                                             <button type="reset" class="btn btn-secondary me-2 float-start">Reset</button>
                                             <button type="submit" class="btn btn-primary float-end">Submit</button>
                                         </div>
