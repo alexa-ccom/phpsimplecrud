@@ -14,7 +14,7 @@
         <ul class="navbar-nav ms-auto">
 
             <li class="nav-item">
-                <a class="nav-link" data-widget="navbar-search" href="data-search.php" role="button">
+                <a class="nav-link" data-widget="navbar-search" href="search-buku.php" role="button">
                     <i class="bi bi-search"></i>
                 </a>
             </li>

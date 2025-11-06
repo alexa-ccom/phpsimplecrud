@@ -19,7 +19,7 @@
                 <li class="nav-item">
                     <a href="data-input.php" class="nav-link">
                         <i class="nav-icon bi bi-clipboard-data-fill"></i>
-                        <p>Input Data Peminjaman Buku</p>
+                        <p>Form Peminjaman Buku</p>
                     </a>
                 </li>
                 <!-- <li class="nav-item">
