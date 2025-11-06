@@ -11,7 +11,6 @@
 			<?php include 'template/navbar.php'; // Menyertakan navbar template ?>
 
 			<?php include 'template/sidebar.php'; // Menyertakan sidebar template ?>
-			 <?php include 'assets/css/custom.css'; ?> 
 
 			<main class="app-main">
 

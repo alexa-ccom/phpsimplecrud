@@ -1,1 +1,223 @@
-/* Taruh CSS Custom Disini */
+
+/*  Layout */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #faf7f2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+/* Header / Navbar */
+header, .navbar {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  color: #2f2f2f;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.navbar a {
+  color: #2f2f2f !important;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+}
+.navbar a:hover {
+  color: #0d6efd;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #1e293b;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+.sidebar h2 {
+  color: #ffcc33;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar a {
+  display: block;
+  color: #e2e8f0;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.sidebar a:hover {
+  background: #334155;
+  color: #ffb347;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  background: #fafaf9;
+  min-height: 100vh;
+}
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Form */
+form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+form input, form select, form textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  transition: border 0.2s;
+}
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #ffb347;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,179,71,0.2);
+}
+
+/* Button */
+button, .btn {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover, .btn:hover {
+  background: linear-gradient(90deg, #ffcc33, #ffb347);
+  transform: translateY(-2px);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+table th {
+  background: #ffb347;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+}
+table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+table tr:hover {
+  background: #fff6e5;
+}
+
+/* Footer */
+footer {
+  background: #1e293b;
+  color: #e2e8f0;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: 20px;
+  border-top: 3px solid #ffb347;
+}
+
+/* Sidebar Toggle Effect */
+@media (max-width: 900px) {
+  .sidebar {
+    left: -250px;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* warna buttin */
+button[value*="hapus"],
+button[name*="hapus"],
+button[class*="hapus"],
+.btn-danger,
+button[value*="batal"],
+button[name*="batal"],
+button[class*="batal"] {
+  background: linear-gradient(90deg, #ff4d4d, #ff1a1a);
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button[value*="hapus"]:hover,
+button[name*="hapus"]:hover,
+button[class*="hapus"]:hover,
+button[value*="batal"]:hover,
+button[name*="batal"]:hover,
+button[class*="batal"]:hover,
+.btn-danger:hover {
+  background: linear-gradient(90deg, #ff1a1a, #e60000);
+  transform: translateY(-2px);
+}
+
+
+table .btn-danger, table button[class*="hapus"], table button[class*="batal"] {
+  background: #ff4d4d;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+table .btn-danger:hover {
+  background: #e60000;
+}
+
+/* Tombol batal dengan gaya lebih lembut (opsional) */
+.btn-cancel, button[value*="batal"] {
+  background: #fff;
+  color: #e60000 !important;
+  border: 2px solid #e60000;
+}
+.btn-cancel:hover, button[value*="batal"]:hover {
+  background: #e60000;
+  color: #fff !important;
+}
