@@ -20,12 +20,26 @@ class MasterData extends Database {
         }
         return $prodi;
     }
-
+   public function getBuku(){
+        $query = "SELECT * FROM tb_daftar_buku";
+        $result = $this->conn->query($query);
+        $buku = [];
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $buku[] = [
+                    'id' => $row['id_book'],
+                    'namabuku' => $row['book_nm']
+                ];
+            }
+        }
+        return $buku;
+    }
 
     // Method untuk mendapatkan daftar status mahasiswa menggunakan array statis
     public function getStatus(){
         return [
-            ['id' => 1, 'nama' => 'Mahasiswa Aktif']
+            ['id' => 1, 'nama' => 'Buku Di Pinjam'],
+            ['id' => 2, 'nama' => 'Buku Di Kembalikan']
         ];
     }
 

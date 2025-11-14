@@ -11,7 +11,7 @@ $delete = $mahasiswa->deleteMahasiswa($id);
 // Mengecek apakah proses delete berhasil atau tidak - true/false
 if($delete){
     // Jika berhasil, redirect ke halaman data-list.php dengan status deletesuccess
-    header("Location: ../data-list.php?status=deletesuccess");
+    header("Location: ../list-data-peminjaman.php?status=deletesuccess");
 } else {
     // Jika gagal, redirect ke halaman data-list.php dengan status deletefailed
     header("Location: ../data-list.php?status=deletefailed");

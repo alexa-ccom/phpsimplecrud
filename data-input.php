@@ -7,6 +7,7 @@ $prodiList = $master->getProdi();
 // Mengambil daftar status mahasiswa
 $statusList = $master->getStatus();
 // $categoryList = $master->getCategory();
+$bukupinjam = $master->getBuku();
 
 // Menampilkan alert berdasarkan status yang diterima melalui parameter GET
 if (isset($_GET['status'])) {
@@ -18,6 +19,7 @@ if (isset($_GET['status'])) {
 }
 
 ?>
+<!--  -->
 <!doctype html>
 <html lang="en">
 	<head>
@@ -114,14 +116,17 @@ if (isset($_GET['status'])) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="mb-3">
-                                            <label for="buku_pinjam" class="form-label">Judul Buku</label>
-                                            <input type="text" class="form-control" id="bukupinjam" name=buku_pinjam" placeholder="Masukkan Judul Buku" required>
-                                            </div>
-                                           <div class="mb-3">
-                                            <label for="kategori" class="form-label">Kategori Buku</label>
-                                            <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Masukkan Kategori Buku" required>
-                                            </div>
+                                             <div class="mb-3">
+                                                <label for="buku_pinjam" class="form-label">Judul Buku</label>
+                                                <select class="form-select" id="buku" name="buku" required>
+                                                    <option value="" selected disabled>Pilih Judul Buku</option>
+                                                    <?php 
+                                                    // Iterasi daftar program studi dan menampilkannya sebagai opsi dalam dropdown
+                                                    foreach ($bukupinjam as $buku){
+                                                        echo '<option value="'.$buku['id'].'">'.$buku['nama'].'</option>';
+                                                    }
+                                                    ?>
+                                                </select>
                                            <div class="mb-3">
                                             <label for="tanggal" class="form-label">Tanggal Peminjaman</label>
                                             <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Kategori Buku" required>
